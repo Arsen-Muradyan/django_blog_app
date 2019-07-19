@@ -1,0 +1,6 @@
+{% extends 'layouts.html' %}
+
+{% block body %}
+  <h1>{{ post.title }}</h1>
+  <span>{{ post.body }} &nbsp;</span><span class="text-secondary">{{ post.created_at }}</span>
+{% endblock %}

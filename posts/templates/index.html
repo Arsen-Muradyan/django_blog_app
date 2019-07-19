@@ -1,0 +1,25 @@
+{% extends 'layouts.html' %}
+
+{% block body %}
+  <table class="table table-striped"> 
+    <tr>
+      <th>Action Title</th>
+      <th>Actions</th>
+    </tr>
+    <tr>    
+    {% for post in posts  %}
+      <td>{{post.title}}</td>
+      <td>
+        <div class="btn-group" role="group" aria-label="Basic example">
+          <a class="btn btn-secondary" href="/posts/{{post.id}}">Show</a>
+          <a class="btn btn-white" href="/posts/{{post.id}}/edit">Edit</a>
+          <form action="/posts/destroy/{{post.id}}" method="POST">
+            {% csrf_token %}
+            <input type="submit" value="Delete" class="btn btn-danger" onclick="return confirm('Sure?')">
+          </form>
+        </div>
+      </td>
+    </tr>
+    {% endfor %}
+  </table>
+{% endblock %}
